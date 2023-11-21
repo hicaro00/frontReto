@@ -25,9 +25,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+             
+
+             
             ],
-            "scripts": [],
+            "scripts": [
+             
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -89,12 +96,22 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+                        
+        
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "d4ba26c9-98a2-4259-956d-7e5baf2de26f"
   }
 }
