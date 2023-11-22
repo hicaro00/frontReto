@@ -4,40 +4,48 @@ import { ApiService } from '../../api.service';
 import { Router } from '@angular/router';
 import { Contacto } from '../../model';
 import { NgForm } from '@angular/forms';
-import{ FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule ],
-  providers:  [ ApiService ],
+  imports: [CommonModule, FormsModule, HttpClientModule, ReactiveFormsModule],
+  providers: [ApiService, HttpClientModule, ReactiveFormsModule, FormBuilder],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
 
+  public myForm!: FormGroup;
+  isLoggedIn = false
+
   creds: Contacto = {
     user: '',
     password: ''
-  }
+  };
 
-  constructor(
+  constructor(private fb: FormBuilder,
     private apiService: ApiService,
     private router: Router
   ) { }
 
+
+
+
   login(form: NgForm) {
     console.log('form value', form.value);
 
-    // Assuming your login function returns an Observable
-    this.apiService.login(this.creds).subscribe(
+    // Use form.value to get the form data
+    this.apiService.login(form.value).subscribe(
       response => {
-        // Assuming you want to navigate upon successful login
-        this.router.navigate(['/login']);
+        // Navigate to the dashboard upon successful login
+        this.isLoggedIn = true;
+        this.router.navigate(['login']);
       },
       error => {
         // Handle error if needed
@@ -47,5 +55,3 @@ export class DashboardComponent {
   }
 
 }
-
-
