@@ -17,17 +17,17 @@ import { LoginService } from '../../services/auth/login.service';
 })
 export class SigninComponent   {
 
-    loginError:string="";
+      loginError:string="";
 
-     loginForm = this.formBuilder.group({
+      loginForm = this.formBuilder.group({
       user: ['', Validators.required],
       password: ['', Validators.required],
-     });
+      });
 
-     creds: Contacto = {
+      creds: Contacto = {
       user: '',
       password: ''
-    };
+      };
 
     constructor(private formBuilder: FormBuilder
                ,private router: Router

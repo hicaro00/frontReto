@@ -6,6 +6,7 @@ import  { Observable, throwError, catchError, BehaviorSubject , map} from 'rxjs'
 import { tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ExchangeRate } from '../../model';
+import {ExchangeRateRequest, ExchangeRateResponse } from '../../model';
 
 
 
@@ -69,6 +70,13 @@ export class LoginService {
 
   getAllExchanges(): Observable<ExchangeRate[]>{
     return this.http.get<ExchangeRate []>('http://localhost:8080/exchange/traer').pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  //calcular el exchange
+  calcularExchange(exchange: ExchangeRateRequest): Observable<ExchangeRateResponse>{
+    return this.http.post<any>('http://localhost:8080/exchange/convert',exchange).pipe(
       catchError(this.handleError)
     )
   }

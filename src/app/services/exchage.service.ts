@@ -1,7 +1,7 @@
 import { HttpClient , HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable,throwError, catchError } from 'rxjs';
-import { ExchangeRate } from '../model';
+import { ExchangeRate, ExchangeRateRequest, ExchangeRateResponse } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +25,11 @@ export class ExchageService {
     }
     return throwError(()=> new Error('Algo falló. Por favor intente nuevamente.'));
   }
+
+  calcularExchange(exchange: ExchangeRateRequest): Observable<ExchangeRateResponse>{
+    return this.http.post<any>('http://localhost:8080/exchange/convert',exchange).pipe(
+      catchError(this.handleError)
+    )
+  }
+
 }
