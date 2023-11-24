@@ -1,0 +1,27 @@
+
+
+<Form  >
+    <mat-form-field class="m-3 ">
+        <mat-label>Divisa de origen</mat-label>
+            <mat-select [(value)]="selectedorigen">
+                <mat-option *ngFor="let moneda of monedas" [value]="moneda.abreviatura">{{moneda.nombreCompleto}}</mat-option>
+            </mat-select>
+    </mat-form-field>
+    <mat-form-field class="m-3 ">
+        <mat-label>Divisa de destino</mat-label>
+            <mat-select [(value)]="selecteddestino">
+                <mat-option *ngFor="let moneda of monedas" [value]="moneda.abreviatura">{{moneda.nombreCompleto}}</mat-option>
+            </mat-select>
+    </mat-form-field>
+    
+    <div class="form-floating mb-3 m-3 ">
+      <input type="number" class="form-control text-capitalize " id="amount" placeholder="monto a cambiar">
+      <label for="floatingInput">Monto a cambiar</label>
+    </div>
+    <div class="text-center mt-4  ">
+        <button mat-raised-button color="primary">calcular</button>
+    </div>
+</Form>   
+<p class="m-2 ">Desde {{selectedorigen}}  </p>
+<p>a la divisa {{selecteddestino}}</p>
+<h2>El Monto final es {{resultado}}</h2>

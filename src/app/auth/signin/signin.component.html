@@ -1,0 +1,31 @@
+
+<form [formGroup]="loginForm">
+    <p class="text-danger">{{loginError}}</p>
+    <div class="mb-3 form-floating">
+        <input formControlName="user" type="user" class="form-control" id="floatingInput" placeholder="nombre de usuario">    
+        <label for="floatingInput" class="form-label">Ingrese su nombre de usuario</label>
+       
+        <div *ngIf="user.invalid && (user.dirty || user.touched)"
+            class="text-danger">
+            <div *ngIf="user.errors?.['required']">
+                El nombre de Usuario es re
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 form-floating">
+        <input formControlName="password" type="password" class="form-control" id="floatingpssw" placeholder="Password">
+        <label for="floatingInput">ingrese su contraseña</label>
+     
+        <div *ngIf="password.invalid && (password.dirty || password.touched)"
+            class="text-danger">
+            <div *ngIf="password.errors?.['required']">
+                El Password es requerido.
+            </div>
+        </div> 
+    </div>
+    
+        <button mat-raised-button type="submit" (click)="login()" class="mx-auto d-block " >Ingresar</button>
+      
+    
+     
+</form>

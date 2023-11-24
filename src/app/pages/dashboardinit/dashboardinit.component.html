@@ -1,0 +1,23 @@
+<mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+  
+  <!-- Name Column -->
+  <ng-container matColumnDef="FROM">
+    <mat-header-cell *matHeaderCellDef> FROM </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.currencyFrom}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="TO">
+    <mat-header-cell *matHeaderCellDef> TO </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.currencyTo}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="RATE">
+    <mat-header-cell *matHeaderCellDef> RATE </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.rate}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

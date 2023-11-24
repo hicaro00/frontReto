@@ -1,17 +1,17 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { DashboardComponent } from './pages/dashboard/DashboardComponent';
+import { SigninComponent } from './auth/signin/signin.component';
+import { DashboardinitComponent } from './pages/dashboardinit/dashboardinit.component';
+import { ExchageformComponent } from './pages/exchageform/exchageform.component';
+import { BoardComponent } from './pages/board/board.component';
 
 export const routes: Routes = [
-        {
-        path:'login',
-        component: LoginComponent
-        },
-        {
-        path:'auth',
-        component:DashboardComponent
-        },
-        { path: '', redirectTo: '/auth', pathMatch: 'full' },
-
+        
+        {path: '', redirectTo: '/auth', pathMatch: 'full' },
+        {path:'auth', component: SigninComponent},
+        {path:'dashboard',component: DashboardinitComponent},
+        {path:'form',component: ExchageformComponent},
+        {path:'main', component: BoardComponent}
+        
+        
 
 ];
